@@ -38,9 +38,9 @@
     <ul>
         <li class="slide">What is TDD?</li>
         <li class="slide">Why use it?</li>
-        <li>
-            <p class="slide">How to apply it?</p>
-            <p class="slide">By example...</p>
+        <li class="slide">
+            <p>How to apply it?</p>
+            <p><strike>By example...</strike></p>
         </li>
     </ul>
 </section>
@@ -48,22 +48,28 @@
 <section class="slide" id="what">
 	<h2>What is TDD?</h2>
     <p>Made popular by Kent Beck in Extreme Programming</p>
-    <ul>
-        <li class="slide"><h3>Software Development Process</h3></li>
-        <li class="slide"><h3>Test-first development + refactoring</h3></li>
-    </ul>
+    <blockquote class="slide">
+        Test-driven development is not about testing. Test-driven development is about development (and design),
+        specifically improving the quality and design of code. The resulting unit tests are just an extremely useful by-product.
+    </blockquote>
+    <div class="slide">
+        <p>Another way to define Test-driven development:</p>
+        <h3>Test-driven development = Test-first development + refactoring</h3>
+    </div>
 </section>
 
 <section class="slide" id="xp">
     <h2>Extreme Programming</h2>
-    <p>We already have lots of feedback during the entire process.</p>
+    <p>When using extreme programming, we already have lots of feedback during the entire process.</p>
     <pre class="slide">
         <img src="images/xploops.gif" alt="XP planning/feedback" />
     </pre>
+    <h4 class="slide">However, we want some more specific way of managing on micro-level.</h4>
 </section>
 
 <section class="slide">
-    <h2>TFD steps</h2>
+    <h2>Test-first development</h2>
+    <p>This is where test-first development kicks in</p>
     <p>Test driven development is much related to the '<strong>test-first</strong>' concepts of XP.</p>
     <pre>
         <img src="images/tddSteps.jpg" alt="TDD-steps" />
@@ -71,8 +77,48 @@
 </section>
 
 <section class="slide">
+    <h2>TFD advantages</h2>
+    <p>A list of ways that test-first programming can affect design:</p>
+    <ul>
+        <li class="slide">
+            Re-use is good. Test first code is born with two clients, not one. This makes adding a third client twice as easy.
+        </li>
+        <li class="slide">
+            Refactoring test-first code results in equally tested code, permitting more aggressive refactorings (RefactorMercilessly).
+            Cruft is not allowed, and code is generally in better shape to accept more refactorings.
+        </li>
+        <li class="slide">When paying attention during all of the little steps, you may discover patterns in your code.</li>
+        <li class="slide">
+            Test code is easy to write. It's usually a couple calls to the server object, then a list of assertions.
+            Writing the easy code first makes writing the hard code easy.
+        </li>
+        <li class="slide">DesignPatterns may be incremented in, not added all of a bunch up front.</li>
+        <li class="slide">Test-first code is written Interface first. You think of the simplest interface that can show function.</li>
+        <li class="slide">
+            Code tends to be less coupled. Effective unit tests only test one thing.
+            To do this you have to move the irrelevant portions out of the way (e.g., MockObjects).
+            This forces out what might be a poor design choice.
+        </li>
+        <li class="slide">
+            UnitTests stand as canonical &amp; tested documentation for objects' usage.
+            Developers read them, and do what they do in production code to the same objects.
+            This keeps projects annealed and on track.
+        </li>
+        <li class="slide">
+            When the developer has to write tests for what he is going to do,
+            he is far less likely to add extraneous capabilities.
+            This really puts a damper on developer driven scope creep.
+        </li>
+        <li class="slide">
+            Test First Design forces you to really think about what you are going to do.
+            It gets you away from "It seemed like a good idea at the time" programming.
+        </li>
+    </ul>
+</section>
+
+<section class="slide">
     <h2>TFD + refactoring == TDD</h2>
-    <p>When we add the rule of removing duplicate code, we get something like the following diagram:</p>
+    <p>When we add the rule of removing duplicate code to TFD, we get something like the following diagram:</p>
     <pre>
         <img src="images/tddStates.jpg" alt="TDD-states" />
     </pre>
@@ -85,11 +131,18 @@
     </pre>
 </section>
 
+<section class="slide">
+    <h2>TDD in a system</h2>
+    <pre class="slide">
+        <img src="images/tdd.png" alt="TDD-system" />
+    </pre>
+</section>
+
 <section class="slide" id="test">
     <h2>What is a test?</h2>
     <p class="slide">Test is <em>verb</em> meaning "<strong>to evaluate</strong>".</p>
     <p class="slide">
-        Test is also a <em>noun</em>, "<strong>a procedure leading to acceptance or rejection.</strong>"\
+        Test is also a <em>noun</em>, "<strong>a procedure leading to acceptance or rejection.</strong>"
     </p>
 </section>
 
@@ -113,14 +166,214 @@
 </section>
 
 <section class="slide">
-    <h2>Turning it up-side-down.</h2>
-    <p>Don't write any code, create a test first.</p>
-    <p>Obviously, the test will fail...</p>
-    <p>So, make the test pass!</p>
+    <h2>TDD step by step</h2>
+    <p>Don't write any production code, create a test first. Think about the desired API.</p>
+    <p>Write just enough code to make the test fail.</p>
+    <p>Run and watch the test fail, now you know the test is running.</p>
+    <p>Write just enough code to make the test pass.</p>
+    <p>Run and watch the tests pass.</p>
+    <p>If you have any duplicate logic, or inexpressive code, refactor to remove duplication and increase expressiveness -- this includes reducing coupling and increasing cohesion.</p>
+    <p>Run the tests again, you should see them pass. If not, you messed up the refactoring, so fix it and re-run.</p>
+    <p>Repeat the steps above, until you can not find any more tests that require writing new code.</p>
+</section>
+
+<section class="slide" id="tdd-example">
+    <h3>Multi-currency example: The Dollar</h3>
+    <pre class="slide">
+        <strong>TODO:</strong>
+        <ul>
+            <li><strong>$5 * 2 = $10</strong></li>
+            <li>$5 + 10 CHF = $10 if rate is 2:1</li>
+        </ul>
+    </pre>
+    <h4 class="slide">Create a new test.</h4>
+    <pre class="slide">
+        <code>
+            public void testMultiplication() {
+                Dollar five= new Dollar(5);
+                five.times(2);
+                assertEquals(10, five.amount);
+            }
+        </code>
+    </pre>
 </section>
 
 <section class="slide">
-    <h2></h2>
+    <h3>Multi-currency example: The Dollar</h3>
+    <h4 class="slide">Some problems arise, before we can run the tests:</h4>
+    <ul class="slide">
+        <li>No class Dollar</li>
+        <li>No constructor</li>
+        <li>No method times(int)</li>
+        <li>No field amount</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <ul>
+        <li>
+            <h4>No class Dollar</h4>
+            <pre class="slide"><code>class Dollar</code></pre>
+        </li>
+
+        <li>
+            <h4>No constructor</h4>
+            <pre class="slide"><code>Dollar(int amount) {}</code></pre>
+        </li>
+
+        <li>
+            <h4>No method times()</h4>
+            <pre class="slide"><code>void times(int multiplier) {}</code></pre>
+        </li>
+
+        <li>
+            <h4>No field amount</h4>
+            <pre class="slide"><code>int amount;</code></pre>
+        </li>
+    </ul>
+</section>
+
+<section class="slide" id="test-pass">
+    <h3>Multi-currency example: The Dollar</h3>
+    <h4>Progress!! The test fails!</h4>
+    <p class="slide">So now what do we do?</p>
+    <p class="slide">Write just enough code to make the test pass.</p>
+    <pre class="slide">
+        <code>
+            public void testMultiplication() {
+                Dollar five= new Dollar(5);
+                five.times(2);
+                assertEquals(10, five.amount);
+            }
+        </code>
+    </pre>
+    <pre class="slide"><code>
+        class Dollar {
+            int amount;
+
+            Dollar(int amount){}
+            void times(int multiplier){}
+        }
+    </code></pre>
+    <pre class="slide"><code>int amount = 10;</code></pre>
+</section>
+
+<section class="slide" id="test-refactor">
+    <h3>Multi-currency example: The Dollar</h3>
+    <h4>Progress!! The test passes!</h4>
+    <p class="slide">Does this seem odd? Well, we're not done yet...</p>
+    <p class="slide">We are now ready to remove duplication. But where is the duplication?</p>
+
+    <pre class="slide">
+        <code>
+            public void testMultiplication() {
+                Dollar five= new Dollar(5);
+                five.times(2);
+                assertEquals(10, five.amount);
+            }
+        </code>
+        <code>
+            class Dollar {
+                int amount = 10;
+
+                Dollar(int amount){}
+                void times(int multiplier){}
+            }
+        </code>
+    </pre>
+
+    <p class="slide">Don't see it? What if we write it like this?</p>
+    <pre class="slide"><code>int amount = 5 * 2;</code></pre>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <p class="slide">The 5 and 2 are now in two places, and we must ruthlessly eliminate duplication before moving on. The rules say so.</p>
+    <p class="slide">
+        There isn't a single step that will eliminate the 5 and the 2.
+        But what if we move the setting of the amount from object initialization to the times() method?
+    </p>
+    <pre class="slide"><code>
+        int amount;
+
+        void times(int multiplier) {
+            amount= 5 * 2;
+        }
+    </code></pre>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <p>The test still passes, the bar stays green. Happiness is still ours!</p>
+    <p class="slide">Do these steps seem too small to you?</p>
+    <p class="slide">Remember, TDD is not about taking teeny-tiny steps, it's about <strong>being able</strong> to take teeny-tiny steps.</p>
+    <p class="slide">So, let's continue!</p>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <pre class="slide"><code>
+        int amount;
+
+        void times(int multiplier) {
+            amount = 5 * 2;
+        }
+    </code></pre>
+    <p class="slide">Where can we get a 5?</p>
+    <p class="slide">That was the value passed to the constructor, so if we save it in the amount variable</p>
+    <pre class="slide"><code>
+    Dollar(int amount) {
+        this.amount = amount;
+    }
+    </code></pre>
+    <p class="slide">Now we can use it in times()</p>
+    <pre class="slide"><code>
+        void times(int multiplier) {
+            amount = amount * 2;
+        }
+    </code></pre>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <p>The value of the parameter "multiplier" is 2, so we can substitute the parameter for the constant</p>
+    <pre class="slide"><code>
+        void times(int multiplier) {
+            amount = amount * multiplier;
+        }
+    </code></pre>
+    <p class="slide">We can reduce duplication even more!</p>
+    <pre class="slide"><code>
+        void times(int multiplier) {
+            amount *= multiplier;
+        }
+    </code></pre>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <h4>We finished our first test and created some production code that passes the test!</h4>
+    <pre class="slide">
+        <strong>TODO:</strong>
+        <ul>
+            <li><strike>$5 * 2 = $10</strike></li>
+            <li>$5 + 10 CHF = $10 if rate is 2:1</li>
+        </ul>
+    </pre>
+</section>
+
+<section class="slide">
+    <h3>Multi-currency example: The Dollar</h3>
+    <h4>Recap: what did we do?</h4>
+    <ul class="slide">
+        <li>Made a list of the tests we knew we needed to have working</li>
+        <li>Told a story with a snippet of code about how we wanted to view one operation</li>
+        <li>Made the test compile with stubs</li>
+        <li>Made the test run by committing horrible sins</li>
+        <li>Gradually generalized the working code, replacing constants with variables</li>
+        <li>Added items to our to-do list rather than addressing them all at once</li>
+    </ul>
 </section>
 
 <section class="slide">
@@ -133,11 +386,6 @@
         <li>Starter tests</li>
         <li>Learning tests</li>
     </ul>
-</section>
-
-<section class="slide">
-    <h2>Create the perfect (test)plan</h2>
-    <p><strong>Don't</strong></p>
 </section>
 
 <section class="slide">
