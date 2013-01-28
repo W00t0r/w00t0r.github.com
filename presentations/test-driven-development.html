@@ -31,16 +31,125 @@
 
 <!-- Begin slides. Just make elements with a class of slide. -->
 
-<section class="slide">
-	<h1>Slide</h1>
+<section class="slide" id="intro">
+    <h2>Techtalk:</h2>
+    <h3 class="slide">Test Driven Development</h3>
+    <p class="slide">Also known as <strong>TDD</strong></p>
+    <ul>
+        <li class="slide">What is TDD?</li>
+        <li class="slide">Why use it?</li>
+        <li>
+            <p class="slide">How to apply it?</p>
+            <p class="slide">By example...</p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide" id="what">
+	<h2>What is TDD?</h2>
+    <p>Made popular by Kent Beck in Extreme Programming</p>
+    <ul>
+        <li class="slide"><h3>Software Development Process</h3></li>
+        <li class="slide"><h3>Test-first development + refactoring</h3></li>
+    </ul>
+</section>
+
+<section class="slide" id="xp">
+    <h2>Extreme Programming</h2>
+    <p>We already have lots of feedback during the entire process.</p>
+    <pre class="slide">
+        <img src="images/xploops.gif" alt="XP planning/feedback" />
+    </pre>
 </section>
 
 <section class="slide">
-	<h1>Content</h1>
+    <h2>TFD steps</h2>
+    <p>Test driven development is much related to the '<strong>test-first</strong>' concepts of XP.</p>
+    <pre>
+        <img src="images/tddSteps.jpg" alt="TDD-steps" />
+    </pre>
 </section>
 
 <section class="slide">
-	<h1>Here</h1>
+    <h2>TFD + refactoring == TDD</h2>
+    <p>When we add the rule of removing duplicate code, we get something like the following diagram:</p>
+    <pre>
+        <img src="images/tddStates.jpg" alt="TDD-states" />
+    </pre>
+</section>
+
+<section class="slide">
+    <h2>Two levels of TDD</h2>
+    <pre class="slide">
+        <img src="images/atdd.jpg" alt="TDD-levels" />
+    </pre>
+</section>
+
+<section class="slide" id="test">
+    <h2>What is a test?</h2>
+    <p class="slide">Test is <em>verb</em> meaning "<strong>to evaluate</strong>".</p>
+    <p class="slide">
+        Test is also a <em>noun</em>, "<strong>a procedure leading to acceptance or rejection.</strong>"\
+    </p>
+</section>
+
+<section class="slide" id="why">
+    <h2>Why use TDD?</h2>
+    <ul>
+        <li class="slide">Improve code quality</li>
+        <li class="slide">Create more confidence</li>
+        <li>
+            <p class="slide">Break free from the negative feedback loop!</p>
+            <p class="slide">What loop?</p>
+        </li>
+    </ul>
+</section>
+
+<section class="slide" id="loop">
+    <h2>The negative loop</h2>
+    <pre>
+        <img src="images/death-spiral.jpg" alt="Death spiral" />
+    </pre>
+</section>
+
+<section class="slide">
+    <h2>Turning it up-side-down.</h2>
+    <p>Don't write any code, create a test first.</p>
+    <p>Obviously, the test will fail...</p>
+    <p>So, make the test pass!</p>
+</section>
+
+<section class="slide">
+    <h2></h2>
+</section>
+
+<section class="slide">
+    <h2>TDD patterns ("greatest hits")</h2>
+    <ul>
+        <li>Test list</li>
+        <li>Isolated tests</li>
+        <li>Asserts first</li>
+        <li>Test data</li>
+        <li>Starter tests</li>
+        <li>Learning tests</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Create the perfect (test)plan</h2>
+    <p><strong>Don't</strong></p>
+</section>
+
+<section class="slide">
+    <h2>Resources</h2>
+    <ul>
+        <li><strong>"Introduction to Test Driven Development (TDD)"</strong>
+        - <a href="http://www.agiledata.org/essays/tdd.html">Scott W. Ambler + Associates</a></li>
+        <li><strong>"Test-Driven Development By Example"</strong>
+        - Kent Beck</a></li>
+        <li><strong>"TestDriveDevelopment wiki"</strong>
+        - <a href="http://c2.com/cgi/wiki?TestDrivenDevelopment">Cunningham & Cunningham, Inc.</a></li>
+    </ul>
 </section>
 
 <!-- End slides. -->
