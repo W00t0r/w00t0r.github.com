@@ -48,17 +48,22 @@
 <section class="slide" id="what">
 	<h2>What is TDD?</h2>
     <p>Made popular by Kent Beck in Extreme Programming</p>
-    <blockquote class="slide">
-        Test-driven development is not about testing. Test-driven development is about development (and design),
-        specifically improving the quality and design of code. The resulting unit tests are just an extremely useful by-product.
-    </blockquote>
+    <div class="slide">
+        <blockquote>
+            Test-driven development is not about testing. Test-driven development is about development (and design),
+            specifically improving the quality and design of code. The resulting unit tests are just an extremely useful by-product.
+        </blockquote>
+        <div class="credit" align="right">
+            <small>Source: <a href="http://onlamp.com/pub/a/python/2004/12/02/tdd_pyunit.html">Test-Driven Development in Python</a></small>
+        </div>
+    </div>
     <div class="slide">
         <p>Another way to define Test-driven development:</p>
         <h3>Test-driven development = Test-first development + refactoring</h3>
     </div>
 </section>
 
-<section class="slide" id="xp">
+<section class="slide" id="xp-graph">
     <h2>Extreme Programming</h2>
     <p>When using extreme programming, we already have lots of feedback during the entire process.</p>
     <pre class="slide">
@@ -67,7 +72,7 @@
     <h4 class="slide">However, we want some more specific way of managing on micro-level.</h4>
 </section>
 
-<section class="slide">
+<section class="slide" id="tfd-graph">
     <h2>Test-first development</h2>
     <p>This is where test-first development kicks in</p>
     <pre>
@@ -89,10 +94,10 @@
         <li class="slide">When paying attention during all of the little steps, you may discover patterns in your code.</li>
         <li class="slide">
             Test code is easy to write. It's usually a couple calls to the server object, then a list of assertions.
-            Writing the easy code first makes writing the hard code easy.
+            <strong>Writing the easy code first makes writing the hard code easy.</strong>
         </li>
-        <li class="slide">DesignPatterns may be incremented in, not added all of a bunch up front.</li>
-        <li class="slide">Test-first code is written Interface first. You think of the simplest interface that can show function.</li>
+        <li class="slide">DesignPatterns may be incremented in development, not added all up front.</li>
+        <li class="slide">Test-first code is written Interface first. You think of the simplest interface that can be used.</li>
         <li class="slide">
             Code tends to be less coupled. Effective unit tests only test one thing.
             To do this you have to move the irrelevant portions out of the way (e.g., MockObjects).
@@ -131,8 +136,13 @@
     </pre>
 </section>
 
-<section class="slide">
+<section class="slide" id="tdd-graph">
     <h2>TDD in a system</h2>
+    <p>
+        This inner loop pumps the outer loops of Extreme Programming. Continuous Integration, Daily Deployment,
+        Frequent Releases, and Steering Software Projects. Tests help us keep promises regarding the quality,
+        cost, and existence of previously installed features.
+    </p>
     <pre class="slide">
         <img src="images/tdd.png" alt="TDD-system" />
     </pre>
